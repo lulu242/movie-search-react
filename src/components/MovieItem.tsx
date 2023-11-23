@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { SimpleMovie } from '../types';
+import { Link } from 'react-router-dom';
 
 interface MovieProps {
   movie: SimpleMovie;
@@ -8,7 +9,7 @@ interface MovieProps {
 
 export const MovieItem: React.FC<MovieProps> = ({movie}) => {
   return (
-    <MovieWarpper poster={movie.Poster}>
+    <MovieWarpper poster={movie.Poster} to={`/movie?id=${movie.imdbID}`}>
       <div className="info">
         <div className="year">{movie.Year}</div>
         <div className="title">{movie.Title}</div>
@@ -17,7 +18,7 @@ export const MovieItem: React.FC<MovieProps> = ({movie}) => {
     )
 }
 
-const MovieWarpper = styled.div<{poster: string}>`
+const MovieWarpper = styled(Link)<{poster: string}>`
   --width: 200px;
   width: var(--width);
   height: calc(var(--width) * 3 / 2);
