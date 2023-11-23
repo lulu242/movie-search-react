@@ -6,7 +6,7 @@ import { MovieList } from '../components/MovieList';
 import { MovieListMore } from '../components/MovieListMore';
 
 export const Home: React.FC = () => {
-  const apikey = process.env.REACT_APP_APIKEY
+  // const apikey = process.env.REACT_APP_APIKEY
   const [movies, setMovies] = useState<moviesState>({
     searchText: '',
     page: 1,
@@ -28,9 +28,13 @@ export const Home: React.FC = () => {
       setMovies((prevMovies) => ({ ...prevMovies, message: '', movies: [] }));
     }
     try {
-      const res = await fetch(
-        `https://omdbapi.com?apikey=${apikey}&s=${movies.searchText}&page=${movies.page}`
-      );
+      // const res = await fetch(
+      //   `https://omdbapi.com?apikey=${apikey}&s=${movies.searchText}&page=${movies.page}`
+      // );
+      const res = await fetch('/api/movie', {
+        method: 'POST',
+        body: JSON.stringify({title: movies.searchText, page}),
+      })
       const { Response, Search, totalResults, Error } = await res.json();
       if (Response === 'True') {
         const newPageMax = Math.ceil(Number(totalResults / 10));
