@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const NotFound: React.FC = () => {
   return (
-    <NotFoundContent>
+    <NotFoundContent className='container'>
       Sorry, page not found..<span>🥲</span>
     </NotFoundContent>
   );
