@@ -9,11 +9,12 @@ export const Movie: React.FC = () => {
   const [movie, setMovie] = React.useState<DetailedMovie>({} as DetailedMovie);
   const [loading, setLoading] = React.useState(true);
   const bigPoster = movie.Poster?.replace('SX300', 'SX700');
+  const apikey = process.env.REACT_APP_APIKEY
 
   const getMovieDetails = async (id: string) => {
     try {
       const res = await fetch(
-        `https://omdbapi.com?apikey=78177d20&i=${id}&plot=full`
+        `https://omdbapi.com?apikey=${apikey}&i=${id}&plot=full`
       );
       const data = await res.json();
       setMovie(data);

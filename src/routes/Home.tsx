@@ -6,6 +6,7 @@ import { MovieList } from '../components/MovieList';
 import { MovieListMore } from '../components/MovieListMore';
 
 export const Home: React.FC = () => {
+  const apikey = process.env.REACT_APP_APIKEY
   const [movies, setMovies] = useState<moviesState>({
     searchText: '',
     page: 1,
@@ -28,7 +29,7 @@ export const Home: React.FC = () => {
     }
     try {
       const res = await fetch(
-        `https://omdbapi.com?apikey=78177d20&s=${movies.searchText}&page=${movies.page}`
+        `https://omdbapi.com?apikey=${apikey}&s=${movies.searchText}&page=${movies.page}`
       );
       const { Response, Search, totalResults, Error } = await res.json();
       if (Response === 'True') {
