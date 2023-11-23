@@ -37,4 +37,9 @@ const HeadlineContainer = styled.section`
   p {
     color: var(--color-white-30);
   }
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 60px;
+    }
+  }
 `;

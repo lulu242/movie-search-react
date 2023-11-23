@@ -94,4 +94,15 @@ const Header = styled.header`
     width: 100%;
     border-radius: 50%;
   }
+
+  @media (max-width: 600px) {
+    padding: 14px 20px;
+
+    nav {
+      display: none;
+    }
+    .user {
+      right: 20px;
+    }
+  }
 `;

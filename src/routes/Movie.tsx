@@ -27,9 +27,9 @@ export const Movie: React.FC = () => {
   useEffect(() => {
     getMovieDetails(id);
   }, [id]);
-  
+
   return loading ? (
-    <MovieContainer bigPoster={bigPoster}>
+    <MovieContainer bigPoster={bigPoster} className="container">
       <div className="poster skeleton"></div>
       <div className="specs">
         <div className="title skeleton"></div>
@@ -38,7 +38,7 @@ export const Movie: React.FC = () => {
       </div>
     </MovieContainer>
   ) : (
-    <MovieContainer bigPoster={bigPoster}>
+    <MovieContainer bigPoster={bigPoster} className="container">
       <div className="poster"></div>
       <div className="specs">
         <div className="title">{movie.Title}</div>
@@ -123,5 +123,19 @@ const MovieContainer = styled.section<{ bigPoster: string }>`
     font-size: 20px;
     color: var(--color-white);
     margin: 24px 0 6px;
+  }
+
+  @media (max-width: 1200px) {
+    gap: 30px;
+    .poster {
+      --width: 300px;
+    }
+  }
+  @media (max-width: 720px) {
+    display: block;
+    .title {
+      font-size: 50px;
+      margin-top: 50px;
+    }
   }
 `;
